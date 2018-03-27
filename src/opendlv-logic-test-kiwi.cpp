@@ -30,7 +30,7 @@ int32_t main(int32_t argc, char **argv) {
   } else {
     bool const VERBOSE{commandlineArguments.count("verbose") != 0};
 
-    Behavior behavior{};
+    Behavior behavior;
 
     auto onEnvelope{[&behavior](cluon::data::Envelope &&envelope)
       {
@@ -58,6 +58,7 @@ int32_t main(int32_t argc, char **argv) {
     while (od4.isRunning()) {
       std::this_thread::sleep_for(std::chrono::duration<double>(dt));
 
+      behavior.step();
       auto groundSteeringAngleRequest = behavior.getGroundSteeringAngle();
       auto pedalPositionRequest = behavior.getPedalPositionRequest();
 

@@ -119,9 +119,11 @@ void Behavior::step() noexcept
 
     opendlv::proxy::GroundSteeringRequest groundSteeringAngleRequest;
     groundSteeringAngleRequest.groundSteering(groundSteeringAngle);
+    m_groundSteeringAngleRequest = groundSteeringAngleRequest;
 
     opendlv::proxy::PedalPositionRequest pedalPositionRequest;
     pedalPositionRequest.position(pedalPosition);
+    m_pedalPositionRequest = pedalPositionRequest;
   }
 }
 
