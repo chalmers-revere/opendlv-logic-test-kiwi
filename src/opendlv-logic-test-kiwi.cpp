@@ -54,8 +54,10 @@ int32_t main(int32_t argc, char **argv) {
 
     cluon::OD4Session od4{static_cast<uint16_t>(std::stoi(commandlineArguments["cid"])), onEnvelope};
 
+    double dt = 1.0 / std::stoi(commandlineArguments["freq"]);
     while (od4.isRunning()) {
-      behavior.step();
+      std::this_thread::sleep_for(std::chrono::duration<double>(dt));
+
       auto groundSteeringAngleRequest = behavior.getGroundSteeringAngle();
       auto pedalPositionRequest = behavior.getPedalPositionRequest();
 
