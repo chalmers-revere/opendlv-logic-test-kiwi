@@ -15,8 +15,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef WORLD_OBJECT
-#define WORLD_OBJECT
+#ifndef BEHAVIOR
+#define BEHAVIOR
 
 #include <mutex>
 
