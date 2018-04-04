@@ -93,8 +93,8 @@ void Behavior::step() noexcept
   double leftDistance = convertIrVoltageToDistance(leftIrReading.voltage());
   double rightDistance = convertIrVoltageToDistance(rightIrReading.voltage());
 
-  float pedalPosition = 0.3f;
-  float groundSteeringAngle = 0.0f;
+  float pedalPosition = 0.2f;
+  float groundSteeringAngle = 0.3f;
   if (frontDistance < 0.3f) {
     pedalPosition = 0.0f;
   } else {
@@ -127,7 +127,7 @@ void Behavior::step() noexcept
   }
 }
 
-// TODO: This is not correct.
+// TODO: This is a rough estimate, improve by looking into the sensor specifications.
 double Behavior::convertIrVoltageToDistance(float voltage) const noexcept
 {
   double voltageDividerR1 = 1000.0;
