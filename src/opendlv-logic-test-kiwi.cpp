@@ -40,7 +40,7 @@ int32_t main(int32_t argc, char **argv) {
         uint32_t const senderStamp = envelope.senderStamp();
         if (senderStamp == 0) {
           behavior.setFrontUltrasonic(distanceReading);
-        } else {
+        } else if (senderStamp == 1) {
           behavior.setRearUltrasonic(distanceReading);
         }
       }};
@@ -50,7 +50,7 @@ int32_t main(int32_t argc, char **argv) {
         uint32_t const senderStamp = envelope.senderStamp();
         if (senderStamp == 0) {
           behavior.setLeftIr(voltageReading);
-        } else {
+        } else if (senderStamp == 1) {
           behavior.setRightIr(voltageReading);
         }
       }};
@@ -65,7 +65,7 @@ int32_t main(int32_t argc, char **argv) {
         auto groundSteeringAngleRequest = behavior.getGroundSteeringAngle();
         auto pedalPositionRequest = behavior.getPedalPositionRequest();
 
-        cluon::data::TimeStamp sampleTime;
+        cluon::data::TimeStamp sampleTime = cluon::time::now();
         od4.send(groundSteeringAngleRequest, sampleTime, 0);
         od4.send(pedalPositionRequest, sampleTime, 0);
         if (VERBOSE) {
